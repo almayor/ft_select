@@ -1,0 +1,5 @@
+.DS_Store
+objs
+.idea
+CMakeLists.txt
+ft_select
