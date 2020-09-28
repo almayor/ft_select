@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal_handler.c                                   :+:      :+:    :+:   */
+/*   set_signals.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:04:53 by unite             #+#    #+#             */
-/*   Updated: 2020/09/28 19:20:17 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/28 23:19:33 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-void	signal_handler(int sig)
+static void		signal_handler(int sig)
 {
 	if (sig == SIGSEGV)
 		fatal("You found a segfault! Good for you! 🤩💪");
@@ -35,4 +35,17 @@ void	signal_handler(int sig)
 		redisplay(NULL);
 	else
 		fatal(NULL);
+}
+
+void			set_signals(void)
+{
+	int	sig;
+
+	sig = 1;
+	while (sig < NSIG)
+	{
+		if (sig != 9 && sig != 17)
+			signal(sig, &signal_handler);
+		sig++;
+	}
 }

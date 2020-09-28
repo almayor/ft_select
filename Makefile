@@ -6,21 +6,23 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/05 18:17:42 by unite             #+#    #+#              #
-#    Updated: 2020/09/28 16:22:56 by unite            ###   ########.fr        #
+#    Updated: 2020/09/28 23:18:33 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_select
 
 SRC_NAME = \
-get_index.c \
 fatal.c \
 ft_select.c \
+get_index.c \
 keystroke.c \
 main.c \
 redisplay.c \
+set_signals.c \
 set_terminal.c \
-signal_handler.c \
+utils/tab_maxlen.c \
+utils/tputchar.c \
 
 ################################################################################
 

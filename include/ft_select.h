@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 02:13:53 by unite             #+#    #+#             */
-/*   Updated: 2020/09/28 17:36:23 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/28 23:20:49 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define FT_SELECT_H
 
 # include <errno.h>
+# include <fcntl.h>
 # include <term.h>
 # include <termios.h> 
 # include <signal.h>
@@ -39,6 +40,7 @@
 
 typedef struct	s_display
 {
+	int		fd;
 	int		argc;
 	char 	**argv;
 	int		*selected;
@@ -50,16 +52,27 @@ typedef struct	s_display
 	int		window_height;
 }				t_display;
 
-void	fatal(const char *mes);
 void	ft_select(t_display *display);
 void	keystroke(t_display *display, const char *key);
 void	redisplay(t_display *display);
 void	set_terminal(int mode);
-void	signal_handler(int sig);
+void	set_signals(void);
+void	fatal(const char *mes);
+
+/*
+** accessory
+*/
 
 int		get_index_bottom(int i, t_display *display);
 int		get_index_left(int i, t_display *display);
 int		get_index_right(int i, t_display *display);
 int		get_index_top(int i, t_display *display);
+
+/*
+** utils
+*/
+
+size_t	tab_maxlen(char **t);
+int		tputchar(int c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:05:59 by unite             #+#    #+#             */
-/*   Updated: 2020/09/28 18:19:29 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/28 23:17:47 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	keystroke_down(t_display *display)
 	else if (irow < display->window_toprow)
 	{
 		display->window_toprow = 0;
-		tputs(tgetstr("bl", NULL), 1, &ft_putchar);
+		tputs(tgetstr("bl", NULL), 1, &tputchar);
 	}
 }
 
@@ -64,7 +64,7 @@ static void	keystroke_up(t_display *display)
 	else if (irow - display->window_toprow >= display->window_height)
 	{
 		display->window_toprow = display->nrows - display->window_height;
-		tputs(tgetstr("bl", NULL), 1, &ft_putchar);
+		tputs(tgetstr("bl", NULL), 1, &tputchar);
 	}
 }
 

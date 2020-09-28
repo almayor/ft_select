@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:01:36 by unite             #+#    #+#             */
-/*   Updated: 2020/09/28 18:44:17 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/28 23:22:28 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	reformat(t_display *display)
 	struct winsize		win;
 	int					max_on_screen;
 
-	if (ioctl(STDIN_FILENO, TIOCGWINSZ, &win))
+	if (ioctl(3, TIOCGWINSZ, &win))
 		fatal("failed to get window size");
 	if (win.ws_col == 0 || win.ws_row == 0)
 		fatal("printing to an invalid terminal");
@@ -53,15 +53,15 @@ static void	reformat(t_display *display)
 static void	redisplay_entry(int i, t_display *display)
 {
 	if (i == display->cursor)
-		tputs(tgetstr("us", NULL), 1, &ft_putchar);
+		tputs(tgetstr("us", NULL), 1, &tputchar);
 	if (display->selected[i])
-		tputs(tgetstr("mr", NULL), 1, &ft_putchar);
-	ft_printf("%s", display->argv[i]);
+		tputs(tgetstr("mr", NULL), 1, &tputchar);
+	ft_dprintf(3, "%s", display->argv[i]);
 	if (i == display->cursor)
-		tputs(tgetstr("ue", NULL), 1, &ft_putchar);
+		tputs(tgetstr("ue", NULL), 1, &tputchar);
 	if (display->selected[i])
-		tputs(tgetstr("me", NULL), 1, &ft_putchar);
-	ft_printf("%*s", display->colwidth - ft_strlen(display->argv[i]), "");
+		tputs(tgetstr("me", NULL), 1, &tputchar);
+	ft_dprintf(3, "%*s", display->colwidth - ft_strlen(display->argv[i]), "");
 }
 
 static void	redisplay_row(int irow, t_display *display)
@@ -76,7 +76,7 @@ static void	redisplay_row(int irow, t_display *display)
 		if (i >= display->argc)
 			break ;
 		if (icol != 0)
-			ft_putchar(' ');
+			tputchar(' ');
 		redisplay_entry(i, display);
 		icol++;
 	}
@@ -93,7 +93,7 @@ void		redisplay(t_display *display)
 		display_bkup = display;
 	reformat(display);
 	reposition(display);
-	tputs(tgetstr("cl", NULL), 1, &ft_putchar);
+	tputs(tgetstr("cl", NULL), 1, &tputchar);
 	irow = display->window_toprow;
 	while (1)
 	{
@@ -102,6 +102,6 @@ void		redisplay(t_display *display)
 		if (irow == display->nrows ||
 			irow - display->window_toprow > display->window_height - 1)
 			break ;
-		ft_putchar('\n');
+		tputchar('\n');
 	}
 }
