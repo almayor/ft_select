@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:01:36 by unite             #+#    #+#             */
-/*   Updated: 2020/09/28 18:26:25 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/28 18:44:17 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,18 @@ static void	reformat(t_display *display)
 	display->window_height = win.ws_row;
 	max_on_screen = win.ws_col / display->colwidth * win.ws_row;
 	if (display->argc > max_on_screen)
+	{
 		display->ncols = win.ws_col / display->colwidth;
+		display->nrows = display->argc / display->ncols;
+		display->nrows += display->argc % display->ncols > 0 ? 1 : 0;
+	}
 	else
 	{
 		display->ncols = display->argc / win.ws_row;
 		display->ncols += display->argc % win.ws_row > 0 ? 1 : 0;
+		display->nrows = display->argc > display->window_height ?
+							display->window_height : display->argc;
 	}
-	display->nrows = display->argc / display->ncols;
-	display->nrows += display->argc % display->ncols > 0 ? 1 : 0;
 }
 
 static void	redisplay_entry(int i, t_display *display)

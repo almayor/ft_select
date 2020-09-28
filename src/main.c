@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 02:10:20 by unite             #+#    #+#             */
-/*   Updated: 2020/09/28 17:52:24 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/28 18:55:17 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static size_t	tab_maxlen(char **t)
 
 static void		init(t_display *display, int argc, char **argv)
 {
-	size_t			i;
+	size_t		sig;
 
 	if (getenv("TERM") == NULL)
 		fatal("TERM environmental variable is not set");
@@ -63,10 +63,14 @@ static void		init(t_display *display, int argc, char **argv)
 	display->colwidth = (int)tab_maxlen(display->argv) + 1;
 	display->window_toprow = 0;
 	if (display->colwidth < MIN_COLWIDTH)
-		display->colwidth = MIN_COLWIDTH; 
-	i = 0;
-	while (i < NSIG)
-		signal(i++, &signal_handler);
+		display->colwidth = MIN_COLWIDTH;
+	sig = 1;
+	while (sig < 30)
+	{
+		if (sig != 9 && sig != 17)
+			signal(sig, &signal_handler);
+		sig++;
+	}
 }
 
 static void		deinit(t_display *display)
