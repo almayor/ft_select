@@ -6,11 +6,28 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:01:36 by unite             #+#    #+#             */
-/*   Updated: 2020/09/28 23:22:28 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/29 00:10:05 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
+
+static int	check_size(t_display *display)
+{
+	struct winsize		win;
+
+	if (ioctl(3, TIOCGWINSZ, &win))
+		fatal("failed to get window size");
+	if (win.ws_col <= display->colwidth || win.ws_row == 0)
+	{
+		tputs(tgetstr("bl", NULL), 1, &tputchar);
+		tputs(tgetstr("mr", NULL), 1, &tputchar);
+		ft_dprintf(3, "Window too small.\n");
+		tputs(tgetstr("me", NULL), 1, &tputchar);
+		return (1);
+	}
+	return (0);
+}
 
 static void	reposition(t_display *display)
 {
@@ -31,8 +48,6 @@ static void	reformat(t_display *display)
 
 	if (ioctl(3, TIOCGWINSZ, &win))
 		fatal("failed to get window size");
-	if (win.ws_col == 0 || win.ws_row == 0)
-		fatal("printing to an invalid terminal");
 	display->window_height = win.ws_row;
 	max_on_screen = win.ws_col / display->colwidth * win.ws_row;
 	if (display->argc > max_on_screen)
@@ -61,7 +76,8 @@ static void	redisplay_entry(int i, t_display *display)
 		tputs(tgetstr("ue", NULL), 1, &tputchar);
 	if (display->selected[i])
 		tputs(tgetstr("me", NULL), 1, &tputchar);
-	ft_dprintf(3, "%*s", display->colwidth - ft_strlen(display->argv[i]), "");
+	ft_dprintf(3, "%*s",
+				display->colwidth - 1 - ft_strlen(display->argv[i]), "");
 }
 
 static void	redisplay_row(int irow, t_display *display)
@@ -91,9 +107,11 @@ void		redisplay(t_display *display)
 		display = display_bkup;
 	else
 		display_bkup = display;
+	tputs(tgetstr("cl", NULL), 1, &tputchar);
+	if (check_size(display))
+		return ;
 	reformat(display);
 	reposition(display);
-	tputs(tgetstr("cl", NULL), 1, &tputchar);
 	irow = display->window_toprow;
 	while (1)
 	{
