@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:05:59 by unite             #+#    #+#             */
-/*   Updated: 2020/09/28 23:49:46 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/29 10:01:27 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	keystroke_del(t_display *display)
 static void	keystroke_space(t_display *display)
 {
 	display->selected[display->cursor] = !display->selected[display->cursor];
-	display->cursor = get_index_bottom(display->cursor, display);
+	if (display->selected[display->cursor])
+		display->cursor = get_index_bottom(display->cursor, display);
 }
 
 static void	keystroke_down(t_display *display)

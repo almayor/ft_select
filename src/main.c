@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 02:10:20 by unite             #+#    #+#             */
-/*   Updated: 2020/09/28 23:26:47 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/29 09:56:28 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static void		print_selection(t_display *display)
 		}
 		i++;
 	}
-	ft_putchar('\n');
+	if (!first)
+		ft_putchar('\n');
 }
 
 static void		init(t_display *display, int argc, char **argv)

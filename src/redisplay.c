@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:01:36 by unite             #+#    #+#             */
-/*   Updated: 2020/09/29 00:10:05 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/29 10:03:09 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ static void	reposition(t_display *display)
 
 	cursor_icol = display->cursor / display->nrows;
 	cursor_irow = display->cursor - cursor_icol * display->nrows;
-	if (cursor_irow < display->window_toprow ||
-		cursor_irow - display->window_toprow > display->window_height)
+	if (cursor_irow < display->window_toprow)
+		display->window_toprow = cursor_irow;
+	if (cursor_irow - display->window_toprow == display->window_height)
+		display->window_toprow++;
+	if (cursor_irow - display->window_toprow > display->window_height)
 		display->window_toprow = cursor_irow;
 }
 
