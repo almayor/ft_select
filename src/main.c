@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 02:10:20 by unite             #+#    #+#             */
-/*   Updated: 2020/09/29 09:56:28 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/29 11:38:21 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		deinit(t_display *display)
 	close(display->fd);
 }
 
-int 			main(int argc, char *argv[])
+int				main(int argc, char *argv[])
 {
 	t_display	display;
 

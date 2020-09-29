@@ -6,11 +6,27 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:26:52 by unite             #+#    #+#             */
-/*   Updated: 2020/09/28 16:50:12 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/29 11:15:43 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
+
+void	lookup(t_display *display, const char *key)
+{
+	int	i;
+
+	i = 0;
+	while (i < display->argc)
+	{
+		if (display->argv[i][0] == key[0])
+		{
+			display->cursor = i;
+			return ;
+		}
+		i++;
+	}
+}
 
 void	ft_select(t_display *display)
 {

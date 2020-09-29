@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/05 18:17:42 by unite             #+#    #+#              #
-#    Updated: 2020/09/29 00:00:56 by unite            ###   ########.fr        #
+#    Updated: 2020/09/29 11:35:25 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ ft_select.c \
 get_index.c \
 keystroke.c \
 main.c \
-redisplay.c \
+redisplay1.c \
+redisplay2.c \
 set_signals.c \
 set_terminal.c \
 utils/tab_maxlen.c \

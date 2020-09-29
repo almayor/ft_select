@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:05:59 by unite             #+#    #+#             */
-/*   Updated: 2020/09/29 10:01:27 by unite            ###   ########.fr       */
+/*   Updated: 2020/09/29 11:16:12 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,6 @@ static void	keystroke_up(t_display *display)
 	{
 		display->window_toprow = display->nrows - display->window_height;
 		tputs(tgetstr("bl", NULL), 1, &tputchar);
-	}
-}
-
-static void	lookup(t_display *display, const char *key)
-{
-	int	i;
-
-	i = 0;
-	while (i < display->argc)
-	{
-		if (display->argv[i][0] == key[0])
-		{
-			display->cursor = i;
-			return ;
-		}
-		i++;
 	}
 }
 
