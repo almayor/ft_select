@@ -1,0 +1,5 @@
+<map id="ft_snprintf" name="ft_snprintf">
+<area shape="rect" id="node1" title="Replicates behaviour of snprintf(3)." alt="" coords="5,5,85,31"/>
+<area shape="rect" id="node2" href="$group__ft__printf.html#ga7d26354c88eea48236271a3d6a57d43c" title="Replicates behaviour of vsnprintf(3)." alt="" coords="133,5,220,31"/>
+<area shape="rect" id="node3" href="$group__ft__printf.html#ga37e1ccf97573714a56ddb34f4bdbcc31" title="Replicates behaviour of vprintf(3)." alt="" coords="268,5,340,31"/>
+</map>

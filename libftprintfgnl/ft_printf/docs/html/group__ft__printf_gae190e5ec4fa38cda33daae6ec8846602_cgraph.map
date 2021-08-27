@@ -1,0 +1,6 @@
+<map id="ft_vasprintf" name="ft_vasprintf">
+<area shape="rect" id="node1" title="Replicates behaviour of vasprintf(3)." alt="" coords="5,31,92,56"/>
+<area shape="rect" id="node2" href="$group__ft__printf.html#ga7d26354c88eea48236271a3d6a57d43c" title="Replicates behaviour of vsnprintf(3)." alt="" coords="140,5,226,31"/>
+<area shape="rect" id="node4" href="$group__ft__printf.html#gac25f864abfb5103b4c2ac73965a24aa0" title="Replicates behaviour of vsprintf(3)." alt="" coords="144,55,223,80"/>
+<area shape="rect" id="node3" href="$group__ft__printf.html#ga37e1ccf97573714a56ddb34f4bdbcc31" title="Replicates behaviour of vprintf(3)." alt="" coords="274,31,347,56"/>
+</map>

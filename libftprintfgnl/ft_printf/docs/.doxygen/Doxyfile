@@ -1,0 +1,24 @@
+ALPHABETICAL_INDEX = NO
+CALL_GRAPH = YES
+COLLABORATION_GRAPH = NO
+COMPACT_LATEX = YES
+DIRECTORY_GRAPH = NO
+EXTRACT_ALL = YES
+EXTRACT_STATIC = NO
+GENERATE_HTML = YES
+GENERATE_LATEX = NO
+GENERATE_TAGFILE = docs/.doxygen/ft_printf.tag
+HAVE_DOT = YES
+HTML_DYNAMIC_MENUS = YES
+HTML_DYNAMIC_SECTIONS = YES
+HTML_OUTPUT = docs/html
+INLINE_SOURCES = NO
+INPUT = . src/ft_printf.c src/ft_dprintf.c src/ft_vprintf.c src/ft_vdprintf.c \
+	src/ft_sprintf.c src/ft_vsprintf.c src/ft_snprintf.c src/ft_vsnprintf.c \
+	src/ft_asprintf.c src/ft_vasprintf.c
+LAYOUT_FILE = docs/.doxygen/DoxygenLayout.xml
+OPTIMIZE_OUTPUT_FOR_C = YES
+PROJECT_NAME = ft_printf
+RECURSIVE = NO
+REFERENCES_RELATION = YES
+SOURCE_BROWSER = NO
