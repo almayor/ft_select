@@ -12,10 +12,35 @@
 
 #include "ft_select.h"
 
+static char		*escape_spaces(const char *s)
+{
+	size_t	nspaces;
+	size_t	i;
+	size_t	j;
+	size_t	len;
+	char	*s1;
+
+	nspaces = ft_strcchr(s, ' ');
+	len = ft_strlen(s);
+	s1 = ft_calloc(len + nspaces + 1, sizeof(char));
+	i = 0;
+	j = 0;
+	while (i < len)
+	{
+		if (s[i] == ' ')
+			s1[j++] = 92;
+		s1[j] = s[i];
+		++i;
+		++j;
+	}
+	return s1;
+}
+
 static void		print_selection(t_display *display)
 {
-	int	first;
-	int	i;
+	int		first;
+	int		i;
+	char	*escaped_name;
 
 	first = 1;
 	i = 0;
@@ -25,7 +50,9 @@ static void		print_selection(t_display *display)
 		{
 			if (!first)
 				ft_putchar(' ');
-			ft_dprintf(STDOUT_FILENO, "%s", display->argv[i]);
+			escaped_name = escape_spaces(display->argv[i]);
+			ft_dprintf(STDOUT_FILENO, "%s", escaped_name);
+			free(escaped_name);
 			first = 0;
 		}
 		i++;
